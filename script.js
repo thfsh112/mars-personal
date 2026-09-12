@@ -1,5 +1,8 @@
-const SUPABASE_URL = 'https://roynzxilxumfzzuezelg.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_nvmHzVjH7bZ8F9cnJYzKCg_PSPlhCXU';
+const SUPABASE_URL =
+  'https://roynzxilxumfzzuezelg.supabase.co';
+
+const ADMIN_API =
+  `${SUPABASE_URL}/functions/v1/admin-api`;
 
 const modal = document.getElementById('modal');
 const pw = document.getElementById('pw');
@@ -18,6 +21,7 @@ document.getElementById('close').onclick = () => {
 };
 
 async function login() {
+
   const password = pw.value.trim();
 
   if (!password) {
@@ -30,47 +34,50 @@ async function login() {
   err.textContent = '';
 
   try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/rpc/check_admin_password`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`
-        },
-        body: JSON.stringify({
-          input_password: password
-        })
-      }
-    );
 
-    if (!response.ok) {
-      throw new Error('request failed');
-    }
+    const response = await fetch(ADMIN_API, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        action: 'login',
+        password
+      })
+    });
 
     const result = await response.json();
 
-    if (result === true) {
-      window.location.href = 'admin.html';
-    } else {
+    if (!response.ok || result.ok !== true) {
       err.textContent = '密碼不正確，再試一次。';
       pw.select();
+      return;
     }
 
+    sessionStorage.setItem(
+      'admin_token',
+      result.token
+    );
+
+    window.location.href = 'admin.html';
+
   } catch (error) {
+
     console.error(error);
-    err.textContent = '驗證失敗，請稍後再試。';
+    err.textContent =
+      '連線失敗，請稍後再試。';
 
   } finally {
+
     enter.disabled = false;
     enter.textContent = 'Enter';
+
   }
 }
 
 enter.onclick = login;
 
-pw.onkeydown = (event) => {
+pw.onkeydown = event => {
   if (event.key === 'Enter') {
     login();
   }
@@ -81,10 +88,13 @@ pw.onkeydown = (event) => {
    COUNTDOWN
 ========================= */
 
-const target = new Date('2026-12-31T23:59:59');
+const target =
+  new Date('2026-12-31T23:59:59');
 
 function tick() {
-  const remaining = Math.max(0, target - new Date());
+
+  const remaining =
+    Math.max(0, target - new Date());
 
   document.getElementById('d').textContent =
     Math.floor(remaining / 86400000);
