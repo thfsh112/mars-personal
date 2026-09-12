@@ -4,82 +4,155 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="A Little Photo Journal">
-<title>A Little Photo Journal · V9</title>
+
+<meta
+name=“description”
+content=“Mars · A Little Photo Journal”
+
+<title>Mars · A Little Photo Journal</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="page">
+<!-- =========================
+     HEADER
+========================= -->
 <header>
-  <div class="brand">
-    A LITTLE<br>
-    <small>PHOTO JOURNAL</small>
-  </div>
+  <a class="brand" href="#">
+    MARS
+    <small>A LITTLE PHOTO JOURNAL</small>
+  </a>
   <nav>
-    <a href="#about">簡介</a>
+    <a href="#about">主畫面</a>
     <a href="#photos">照片</a>
-    <a href="#note">文字</a>
     <a href="#music">音樂</a>
+    <a href="#schedule">日程</a>
   </nav>
 </header>
 <main>
 <!-- =========================
-     01 / ABOUT
+     01 / HOME
 ========================= -->
-<section id="about" class="intro">
-  <div class="eyebrow">
-    02 / A LITTLE NOTE
-  </div>
-  <div class="introGrid">
-<div>
-  <p class="hi">Hi, I’m</p>
-  <h1>詠丞<span>。</span></h1>
+<section
+  id="about"
+  class="intro"
+>
+  <!-- LEFT : INTRO -->
+  <div class="intro-copy">
+<div class="eyebrow">
+  01 / HELLO
 </div>
-<div class="introText">
-  <p>
-    喜歡用鏡頭記錄生活裡的溫柔與不經意，<br>
-    在平凡的日子裡，尋找不平凡的風景。<br>
-    希望透過照片，讓大家也能看見我眼中的世界。
-  </p>
-  <div class="socials">
-    <a
-      class="social instagram"
-      href="#"
-      aria-label="Instagram"
-      target="_blank"
-    >◎</a>
-    <a
-      class="social email"
-      href="mailto:"
-      aria-label="Email"
-    >✉</a>
-  </div>
+<p class="hi">
+  Hi, I'm
+</p>
+<h1 id="name">
+  Mars<span>。</span>
+</h1>
+<p
+  id="introText"
+  class="intro-text"
+>
+  喜歡用鏡頭記錄生活裡的溫柔與不經意，
+  在平凡的日子裡，尋找不平凡的風景。
+  希望透過照片，讓大家也能看見我眼中的世界。
+</p>
+<!-- SOCIAL -->
+<div class="socials">
+  <a
+    id="instagramLink"
+    class="social"
+    href="https://www.instagram.com/_oso7.m4r5/"
+    target="_blank"
+    rel="noopener"
+    aria-label="Instagram"
+  >
+    <svg viewBox="0 0 24 24">
+      <rect
+        x="3.2"
+        y="3.2"
+        width="17.6"
+        height="17.6"
+        rx="5"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="4.1"
+      />
+      <circle
+        class="dot"
+        cx="17.5"
+        cy="6.6"
+        r="1.1"
+      />
+    </svg>
+  </a>
+  <a
+    id="emailLink"
+    class="social"
+    href="mailto:marsmars1000507@gmail.com"
+    aria-label="Gmail"
+  >
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M3.5 6.2
+           L12 12.7
+           L20.5 6.2"
+      />
+      <path
+        d="M4.2 5.5
+           H19.8
+           C20.5 5.5 21 6 21 6.7
+           V17.3
+           C21 18 20.5 18.5 19.8 18.5
+           H4.2
+           C3.5 18.5 3 18 3 17.3
+           V6.7
+           C3 6 3.5 5.5 4.2 5.5Z"
+      />
+    </svg>
+  </a>
 </div>
   </div>
-  <div class="flower">
-    Good Things<br>
-    <i>Take Time</i> ✿
+  <!-- RIGHT : MAIN PHOTO -->
+  <div class="hero-visual">
+<div
+  id="heroPhoto"
+  class="hero-photo placeholder"
+>
+  <span>
+    YOUR MAIN PHOTO
+  </span>
+  <small>
+    從後台放入你的主視覺照片
+  </small>
+</div>
+<div class="hero-caption">
+  <span>
+    02 / A LITTLE MOMENT
+  </span>
+  <i>
+    Good things take time.
+  </i>
+</div>
   </div>
 </section>
 <!-- =========================
-     HERO + ONE QUOTE
+     02 / QUOTE
 ========================= -->
-<section class="hero">
-  <div class="heroPhoto">
-<div>
-  YOUR HERO PHOTO
-  <small>
-    把你的照片放到 images/hero.jpg
-  </small>
+<section
+  id="quote"
+  class="quote-section"
+>
+  <div class="quote-card">
+<div class="quote-mark">
+  “
 </div>
-  </div>
-  <!-- 佳句只保留這一個 -->
-  <div class="quote">
-<p>
-  有些日子沒有特別發生什麼，但回頭看，
-  才發現它們也很值得被記住。
+<p id="quoteText">
+  有些日子沒有特別發生什麼，
+  但回頭看，才發現它們也很值得被記住。
 </p>
-<small>
+<small id="quoteAuthor">
   — 2026 · a note to myself
 </small>
   </div>
@@ -87,8 +160,11 @@
 <!-- =========================
      03 / PHOTO JOURNAL
 ========================= -->
-<section id="photos">
-  <div class="head">
+<section
+  id="photos"
+  class="photos-section"
+>
+  <div class="section-head">
 <div>
   <div class="eyebrow">
     03 / MEMORIES
@@ -98,133 +174,128 @@
   </h2>
 </div>
 <p>
-  把日常裡的小小光影，<br>
-  慢慢收藏起來。
+  每一張照片，<br>
+  都留著當時的光。
 </p>
   </div>
-  <div class="grid">
-<div class="photo tall">
-  PHOTO 01
-  <small>images/photo1.jpg</small>
-</div>
-<div class="photo">
-  PHOTO 02
-  <small>images/photo2.jpg</small>
-</div>
-<div class="photo">
-  PHOTO 03
-  <small>images/photo3.jpg</small>
-</div>
-<div class="photo wide">
-  PHOTO 04
-  <small>images/photo4.jpg</small>
-</div>
-<div class="photo">
-  PHOTO 05
-  <small>images/photo5.jpg</small>
-</div>
-<div class="photo tall">
-  PHOTO 06
-  <small>images/photo6.jpg</small>
+  <!-- PHOTO GRID -->
+  <div
+    id="photoGrid"
+    class="photo-grid"
+  >
+<!--
+  照片會由後台自動加入這裡。
+  每張照片的資訊會顯示：
+  CAMERA
+  LENS
+  FOCAL LENGTH
+  APERTURE
+  ISO
+  SHUTTER
+  DATE
+-->
+<div class="empty-photo">
+  還沒有照片
+  <small>
+    從祕密後台上傳你的第一張照片
+  </small>
 </div>
   </div>
 </section>
 <!-- =========================
-     04 / PERSONAL NOTE
-     不再放重複佳句
+     04 / MUSIC
 ========================= -->
-<section id="note" class="note">
+<section
+  id="music"
+  class="music-section"
+>
   <div class="eyebrow">
-    04 / PERSONAL NOTE
+    04 / CURRENTLY PLAYING
   </div>
-  <div class="noteBox">
-<p>
-  想說的話
-</p>
-<small>
-  這裡可以寫給未來自己的話，也可以放一段最近很喜歡的文字。
-</small>
-  </div>
-</section>
-<!-- =========================
-     05 / MUSIC
-========================= -->
-<section id="music">
-  <div class="eyebrow">
-    05 / CURRENTLY PLAYING
-  </div>
-  <div class="music">
+  <div class="music-card">
 <div class="record">
   ♪
 </div>
-<div>
-  <h3>
+<div class="music-copy">
+  <h3 id="musicTitle">
     My little soundtrack
   </h3>
-  <p>
-    把最近喜歡的歌放在這裡。
+  <p id="musicDescription">
+    最近正在播放的歌。
   </p>
 </div>
 <a
+  id="spotifyLink"
+  class="music-btn"
   href="#"
-  class="musicBtn"
   target="_blank"
+  rel="noopener"
 >
   Spotify ↗
 </a>
   </div>
 </section>
 <!-- =========================
-     06 / COUNTDOWN
+     05 / SCHEDULE
 ========================= -->
-<section>
+<section
+  id="schedule"
+  class="schedule-section"
+>
   <div class="eyebrow">
-    06 / COUNTDOWN
+    05 / A DAY TO REMEMBER
   </div>
-  <div class="count">
+  <div class="schedule-card">
 <div>
   <h2>
-    A DAY TO REMEMBER
+    COUNTDOWN
   </h2>
-  <small>
+  <small id="countdownDateLabel">
     2026-12-31
   </small>
 </div>
-<div class="nums">
+<div class="countdown">
   <div>
     <b id="d">0</b>
     <small>DAYS</small>
   </div>
   <div>
-    <b id="h">0</b>
+    <b id="h">00</b>
     <small>HOURS</small>
   </div>
   <div>
-    <b id="m">0</b>
+    <b id="m">00</b>
     <small>MIN</small>
   </div>
   <div>
-    <b id="s">0</b>
+    <b id="s">00</b>
     <small>SEC</small>
   </div>
 </div>
   </div>
 </section>
 <!-- =========================
-     SECRET BUTTON
+     SECRET EDITOR
 ========================= -->
 <section class="secret">
-  <button id="secretBtn">
-    ✦
+
+<button
+id=“secretBtn”
+aria-label=“Private editor”
+
+✦
   </button>
   <p>
     some things are better kept a little secret.
   </p>
 </section>
 </main>
+<!-- =========================
+     FOOTER
+========================= -->
 <footer>
   <span>
-    © 2026 A LITTLE PHOTO JOURNAL
+    © 2026 MARS
   </span>
   <span>
     made with little moments ♡
@@ -232,15 +303,16 @@
 </footer>
 </div>
 <!-- =========================
-     SECRET LOGIN MODAL
+     LOGIN MODAL
 ========================= -->
 <div
   id="modal"
   class="modal hidden"
 >
-  <div class="modalBox">
+  <div class="modal-box">
 <button
   id="close"
+  class="close"
   aria-label="Close"
 >
   ×
@@ -260,10 +332,16 @@
   placeholder="Password"
   autocomplete="current-password"
 >
-<button id="enter">
+<button
+  id="enter"
+  class="enter"
+>
   Enter
 </button>
-<div id="err"></div>
+<div
+  id="err"
+  class="err"
+></div>
   </div>
 </div>
 <script src="script.js"></script>
