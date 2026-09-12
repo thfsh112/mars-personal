@@ -1,22 +1,14 @@
 <!doctype html>
-
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<meta
-name=“description”
-content=“Mars · A Little Photo Journal”
-
+<meta name="description" content="Mars · A Little Photo Journal">
 <title>Mars · A Little Photo Journal</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="page">
-<!-- =========================
-     HEADER
-========================= -->
 <header>
   <a class="brand" href="#">
     MARS
@@ -30,318 +22,116 @@ content=“Mars · A Little Photo Journal”
   </nav>
 </header>
 <main>
-<!-- =========================
-     01 / HOME
-========================= -->
-<section
-  id="about"
-  class="intro"
->
-  <!-- LEFT : INTRO -->
-  <div class="intro-copy">
-<div class="eyebrow">
-  01 / HELLO
-</div>
-<p class="hi">
-  Hi, I'm
-</p>
-<h1 id="name">
-  Mars<span>。</span>
-</h1>
-<p
-  id="introText"
-  class="intro-text"
->
-  喜歡用鏡頭記錄生活裡的溫柔與不經意，
-  在平凡的日子裡，尋找不平凡的風景。
-  希望透過照片，讓大家也能看見我眼中的世界。
-</p>
-<!-- SOCIAL -->
-<div class="socials">
-  <a
-    id="instagramLink"
-    class="social"
-    href="https://www.instagram.com/_oso7.m4r5/"
-    target="_blank"
-    rel="noopener"
-    aria-label="Instagram"
-  >
-    <svg viewBox="0 0 24 24">
-      <rect
-        x="3.2"
-        y="3.2"
-        width="17.6"
-        height="17.6"
-        rx="5"
-      />
-      <circle
-        cx="12"
-        cy="12"
-        r="4.1"
-      />
-      <circle
-        class="dot"
-        cx="17.5"
-        cy="6.6"
-        r="1.1"
-      />
-    </svg>
-  </a>
-  <a
-    id="emailLink"
-    class="social"
-    href="mailto:marsmars1000507@gmail.com"
-    aria-label="Gmail"
-  >
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M3.5 6.2
-           L12 12.7
-           L20.5 6.2"
-      />
-      <path
-        d="M4.2 5.5
-           H19.8
-           C20.5 5.5 21 6 21 6.7
-           V17.3
-           C21 18 20.5 18.5 19.8 18.5
-           H4.2
-           C3.5 18.5 3 18 3 17.3
-           V6.7
-           C3 6 3.5 5.5 4.2 5.5Z"
-      />
-    </svg>
-  </a>
-</div>
+<section id="about" class="intro">
+  <div class="eyebrow">01 / HELLO</div>
+  <div class="introGrid">
+    <div>
+      <p class="hi">Hi, I'm</p>
+      <h1 id="name">Mars<span>。</span></h1>
+    </div>
+    <div class="introText">
+      <p id="introText">
+        喜歡用鏡頭記錄生活裡的溫柔與不經意，<br>
+        在平凡的日子裡，尋找不平凡的風景。<br>
+        希望透過照片，讓大家也能看見我眼中的世界。
+      </p>
+      <div class="socials">
+        <a id="instagramLink" class="social" href="https://www.instagram.com/_oso7.m4r5/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+        <a id="emailLink" class="social" href="mailto:marsmars1000507@gmail.com" aria-label="Email">✉</a>
+      </div>
+    </div>
   </div>
-  <!-- RIGHT : MAIN PHOTO -->
-  <div class="hero-visual">
-<div
-  id="heroPhoto"
-  class="hero-photo placeholder"
->
-  <span>
-    YOUR MAIN PHOTO
-  </span>
-  <small>
-    從後台放入你的主視覺照片
-  </small>
-</div>
-<div class="hero-caption">
-  <span>
-    02 / A LITTLE MOMENT
-  </span>
-  <i>
-    Good things take time.
-  </i>
-</div>
+  <div class="flower">Good Things<br><i>Take Time</i> ✿</div>
+</section>
+
+<section class="hero">
+  <div id="heroPhoto" class="heroPhoto">
+    <div>
+      YOUR MAIN PHOTO
+      <small>從後台放入你的主視覺照片</small>
+    </div>
+  </div>
+  <div class="quote">
+    <p id="quoteText">有些日子沒有特別發生什麼，但回頭看，才發現它們也很值得被記住。</p>
+    <small id="quoteAuthor">— 2026 · a note to myself</small>
   </div>
 </section>
-<!-- =========================
-     02 / QUOTE
-========================= -->
-<section
-  id="quote"
-  class="quote-section"
->
-  <div class="quote-card">
-<div class="quote-mark">
-  “
-</div>
-<p id="quoteText">
-  有些日子沒有特別發生什麼，
-  但回頭看，才發現它們也很值得被記住。
-</p>
-<small id="quoteAuthor">
-  — 2026 · a note to myself
-</small>
+
+<section id="photos">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 / MEMORIES</div>
+      <h2>PHOTO JOURNAL</h2>
+    </div>
+    <p>每一張照片，<br>都留著當時的光。</p>
+  </div>
+  <div id="photoGrid" class="grid">
+    <div class="photo tall">PHOTO 01<small>從祕密後台上傳</small></div>
+    <div class="photo">PHOTO 02<small>從祕密後台上傳</small></div>
+    <div class="photo">PHOTO 03<small>從祕密後台上傳</small></div>
+    <div class="photo wide">PHOTO 04<small>從祕密後台上傳</small></div>
+    <div class="photo">PHOTO 05<small>從祕密後台上傳</small></div>
+    <div class="photo tall">PHOTO 06<small>從祕密後台上傳</small></div>
   </div>
 </section>
-<!-- =========================
-     03 / PHOTO JOURNAL
-========================= -->
-<section
-  id="photos"
-  class="photos-section"
->
-  <div class="section-head">
-<div>
-  <div class="eyebrow">
-    03 / MEMORIES
-  </div>
-  <h2>
-    PHOTO JOURNAL
-  </h2>
-</div>
-<p>
-  每一張照片，<br>
-  都留著當時的光。
-</p>
-  </div>
-  <!-- PHOTO GRID -->
-  <div
-    id="photoGrid"
-    class="photo-grid"
-  >
-<!--
-  照片會由後台自動加入這裡。
-  每張照片的資訊會顯示：
-  CAMERA
-  LENS
-  FOCAL LENGTH
-  APERTURE
-  ISO
-  SHUTTER
-  DATE
--->
-<div class="empty-photo">
-  還沒有照片
-  <small>
-    從祕密後台上傳你的第一張照片
-  </small>
-</div>
+
+<section id="note" class="note">
+  <div class="eyebrow">04 / PERSONAL NOTE</div>
+  <div class="noteBox">
+    <p>想說的話</p>
+    <small>這裡可以寫給未來自己的話，也可以放一段最近很喜歡的文字。</small>
   </div>
 </section>
-<!-- =========================
-     04 / MUSIC
-========================= -->
-<section
-  id="music"
-  class="music-section"
->
-  <div class="eyebrow">
-    04 / CURRENTLY PLAYING
-  </div>
-  <div class="music-card">
-<div class="record">
-  ♪
-</div>
-<div class="music-copy">
-  <h3 id="musicTitle">
-    My little soundtrack
-  </h3>
-  <p id="musicDescription">
-    最近正在播放的歌。
-  </p>
-</div>
-<a
-  id="spotifyLink"
-  class="music-btn"
-  href="#"
-  target="_blank"
-  rel="noopener"
->
-  Spotify ↗
-</a>
+
+<section id="music">
+  <div class="eyebrow">05 / CURRENTLY PLAYING</div>
+  <div class="music">
+    <div class="record">♪</div>
+    <div>
+      <h3 id="musicTitle">My little soundtrack</h3>
+      <p id="musicDescription">最近正在播放的歌。</p>
+    </div>
+    <a id="spotifyLink" href="#" class="musicBtn" target="_blank" rel="noopener">Spotify ↗</a>
   </div>
 </section>
-<!-- =========================
-     05 / SCHEDULE
-========================= -->
-<section
-  id="schedule"
-  class="schedule-section"
->
-  <div class="eyebrow">
-    05 / A DAY TO REMEMBER
-  </div>
-  <div class="schedule-card">
-<div>
-  <h2>
-    COUNTDOWN
-  </h2>
-  <small id="countdownDateLabel">
-    2026-12-31
-  </small>
-</div>
-<div class="countdown">
-  <div>
-    <b id="d">0</b>
-    <small>DAYS</small>
-  </div>
-  <div>
-    <b id="h">00</b>
-    <small>HOURS</small>
-  </div>
-  <div>
-    <b id="m">00</b>
-    <small>MIN</small>
-  </div>
-  <div>
-    <b id="s">00</b>
-    <small>SEC</small>
-  </div>
-</div>
+
+<section id="schedule">
+  <div class="eyebrow">06 / A DAY TO REMEMBER</div>
+  <div class="count">
+    <div>
+      <h2>COUNTDOWN</h2>
+      <small id="countdownDateLabel">2026-12-31</small>
+    </div>
+    <div class="nums">
+      <div><b id="d">0</b><small>DAYS</small></div>
+      <div><b id="h">00</b><small>HOURS</small></div>
+      <div><b id="m">00</b><small>MIN</small></div>
+      <div><b id="s">00</b><small>SEC</small></div>
+    </div>
   </div>
 </section>
-<!-- =========================
-     SECRET EDITOR
-========================= -->
+
 <section class="secret">
-
-<button
-id=“secretBtn”
-aria-label=“Private editor”
-
-✦
-  </button>
-  <p>
-    some things are better kept a little secret.
-  </p>
+  <button id="secretBtn" aria-label="Private editor">✦</button>
+  <p>some things are better kept a little secret.</p>
 </section>
 </main>
-<!-- =========================
-     FOOTER
-========================= -->
+
 <footer>
-  <span>
-    © 2026 MARS
-  </span>
-  <span>
-    made with little moments ♡
-  </span>
+  <span>© 2026 MARS</span>
+  <span>made with little moments ♡</span>
 </footer>
 </div>
-<!-- =========================
-     LOGIN MODAL
-========================= -->
-<div
-  id="modal"
-  class="modal hidden"
->
-  <div class="modal-box">
-<button
-  id="close"
-  class="close"
-  aria-label="Close"
->
-  ×
-</button>
-<div class="eyebrow">
-  PRIVATE AREA
-</div>
-<h2>
-  Welcome back.
-</h2>
-<p>
-  輸入密碼進入編輯區
-</p>
-<input
-  id="pw"
-  type="password"
-  placeholder="Password"
-  autocomplete="current-password"
->
-<button
-  id="enter"
-  class="enter"
->
-  Enter
-</button>
-<div
-  id="err"
-  class="err"
-></div>
+
+<div id="modal" class="modal hidden">
+  <div class="modalBox">
+    <button id="close" aria-label="Close">×</button>
+    <div class="eyebrow">PRIVATE AREA</div>
+    <h2>Welcome back.</h2>
+    <p>輸入密碼進入編輯區</p>
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="enter">Enter</button>
+    <div id="err"></div>
   </div>
 </div>
 <script src="script.js"></script>
