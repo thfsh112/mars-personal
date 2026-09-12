@@ -1,1 +1,454 @@
-<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V9 Editor</title><style>body{margin:0;background:#fbf7f2;color:#5e514c;font-family:Arial,sans-serif}.box{max-width:700px;margin:80px auto;padding:45px;background:#fffdfb;border:1px solid #ded3cd}h1{font:400 52px Georgia}.muted{color:#9b8e88;line-height:2}a{color:#8f6f68}</style><div class="box"><small>PRIVATE AREA · V9</small><h1>Editor</h1><p class="muted">這是 V9 的秘密編輯入口。下一階段可以把照片、簡介、音樂與倒數日期接到 Supabase，變成真正可儲存的後台。</p><a href="index.html">← 回到網站</a></div></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V9 Editor</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#fbf7f2;
+  --ink:#5e514c;
+  --rose:#b98e87;
+  --line:#ded3cd;
+  --white:#fffdfb;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Noto Sans TC',sans-serif;
+  font-weight:300;
+}
+
+.page{
+  max-width:900px;
+  margin:auto;
+  padding:45px 25px 80px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+  padding-bottom:25px;
+  margin-bottom:45px;
+}
+
+.brand{
+  font:600 22px/1 'Cormorant Garamond';
+  letter-spacing:3px;
+}
+
+.brand small{
+  font:400 9px 'Noto Sans TC';
+  letter-spacing:3px;
+}
+
+.links{
+  display:flex;
+  gap:12px;
+}
+
+.links a,
+.links button{
+  border:1px solid var(--line);
+  background:var(--white);
+  color:var(--ink);
+  padding:9px 15px;
+  text-decoration:none;
+  cursor:pointer;
+  font-size:11px;
+}
+
+.eyebrow{
+  color:var(--rose);
+  font-size:10px;
+  letter-spacing:3px;
+  margin-bottom:12px;
+}
+
+h1{
+  font:500 58px/.9 'Cormorant Garamond';
+  margin:0 0 12px;
+}
+
+h2{
+  font:500 32px 'Cormorant Garamond';
+  margin:0 0 25px;
+}
+
+.card{
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:30px;
+  margin-bottom:22px;
+}
+
+label{
+  display:block;
+  font-size:11px;
+  letter-spacing:1px;
+  margin:18px 0 7px;
+}
+
+input,
+textarea{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  padding:12px 14px;
+  font:300 13px 'Noto Sans TC';
+  outline:none;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+  line-height:1.8;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--rose);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.photo{
+  border:1px solid var(--line);
+  padding:20px;
+  background:#faf5f0;
+}
+
+.photoTitle{
+  font:500 25px 'Cormorant Garamond';
+}
+
+.save{
+  width:100%;
+  border:0;
+  background:var(--ink);
+  color:white;
+  padding:16px;
+  cursor:pointer;
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+.save:disabled{
+  opacity:.5;
+}
+
+.status{
+  text-align:center;
+  min-height:25px;
+  margin:15px 0;
+  font-size:12px;
+  color:var(--rose);
+}
+
+@media(max-width:650px){
+  .grid{grid-template-columns:1fr}
+  .top{align-items:flex-start;gap:20px}
+  .links{flex-direction:column}
+  h1{font-size:48px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="top">
+    <div>
+      <div class="brand">
+        A LITTLE<br>
+        <small>PHOTO JOURNAL · V9 EDITOR</small>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="index.html">回到網站</a>
+      <button id="logout">登出</button>
+    </div>
+  </div>
+
+  <div class="eyebrow">PRIVATE AREA · V9</div>
+  <h1>Editor</h1>
+
+  <div id="loading" class="status">正在載入資料……</div>
+
+  <section class="card">
+    <div class="eyebrow">01 / PROFILE</div>
+    <h2>簡介</h2>
+
+    <label>名字</label>
+    <input id="name">
+
+    <label>自我介紹</label>
+    <textarea id="intro"></textarea>
+
+    <label>Instagram 網址</label>
+    <input id="instagram_url" placeholder="https://instagram.com/...">
+
+    <label>Email</label>
+    <input id="email" placeholder="you@example.com">
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">02 / HERO</div>
+    <h2>首頁照片與文字</h2>
+
+    <label>Hero 照片網址</label>
+    <input id="hero_image" placeholder="https://...">
+
+    <label>照片文字</label>
+    <textarea id="quote"></textarea>
+
+    <label>照片文字下面的小字</label>
+    <input id="quote_author">
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">03 / PHOTO JOURNAL</div>
+    <h2>照片</h2>
+
+    <div class="grid">
+
+      <div class="photo">
+        <div class="photoTitle">PHOTO 01</div>
+        <label>照片網址</label>
+        <input id="photo1">
+        <label>文字</label>
+        <input id="caption1">
+      </div>
+
+      <div class="photo">
+        <div class="photoTitle">PHOTO 02</div>
+        <label>照片網址</label>
+        <input id="photo2">
+        <label>文字</label>
+        <input id="caption2">
+      </div>
+
+      <div class="photo">
+        <div class="photoTitle">PHOTO 03</div>
+        <label>照片網址</label>
+        <input id="photo3">
+        <label>文字</label>
+        <input id="caption3">
+      </div>
+
+      <div class="photo">
+        <div class="photoTitle">PHOTO 04</div>
+        <label>照片網址</label>
+        <input id="photo4">
+        <label>文字</label>
+        <input id="caption4">
+      </div>
+
+      <div class="photo">
+        <div class="photoTitle">PHOTO 05</div>
+        <label>照片網址</label>
+        <input id="photo5">
+        <label>文字</label>
+        <input id="caption5">
+      </div>
+
+      <div class="photo">
+        <div class="photoTitle">PHOTO 06</div>
+        <label>照片網址</label>
+        <input id="photo6">
+        <label>文字</label>
+        <input id="caption6">
+      </div>
+
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">04 / PERSONAL NOTE</div>
+    <h2>文字</h2>
+
+    <label>主要文字</label>
+    <textarea id="note_text"></textarea>
+
+    <label>小字</label>
+    <textarea id="note_small"></textarea>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">05 / MUSIC</div>
+    <h2>音樂</h2>
+
+    <label>Spotify 網址</label>
+    <input id="spotify_url">
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">06 / COUNTDOWN</div>
+    <h2>倒數</h2>
+
+    <label>倒數日期</label>
+    <input id="countdown_date" type="date">
+  </section>
+
+  <div class="status" id="status"></div>
+
+  <button class="save" id="save">
+    SAVE CHANGES
+  </button>
+
+</div>
+
+<script>
+const API =
+  'https://roynzxilxumfzzuezelg.supabase.co/functions/v1/admin-api';
+
+const token = sessionStorage.getItem('admin_token');
+
+if (!token) {
+  location.href = 'index.html';
+}
+
+const fields = [
+  'name',
+  'intro',
+  'instagram_url',
+  'email',
+  'hero_image',
+  'quote',
+  'quote_author',
+  'note_text',
+  'note_small',
+  'spotify_url',
+  'countdown_date'
+];
+
+const photoFields = [];
+
+for (let i = 1; i <= 6; i++) {
+  photoFields.push('photo' + i);
+  photoFields.push('caption' + i);
+}
+
+async function api(action, extra = {}) {
+  const response = await fetch(API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      action,
+      token,
+      ...extra
+    })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      sessionStorage.removeItem('admin_token');
+      location.href = 'index.html';
+    }
+
+    throw new Error(data.error || 'request failed');
+  }
+
+  return data;
+}
+
+function setValue(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.value = value || '';
+}
+
+function getValue(id) {
+  return document.getElementById(id)?.value || '';
+}
+
+async function load() {
+  try {
+    const result = await api('get');
+    const data = result.content?.data || {};
+
+    fields.forEach(id => {
+      setValue(id, data[id]);
+    });
+
+    for (let i = 1; i <= 6; i++) {
+      setValue('photo' + i, data['photo' + i]);
+      setValue('caption' + i, data['caption' + i]);
+    }
+
+    document.getElementById('loading').textContent = '資料已載入';
+  } catch (error) {
+    console.error(error);
+    document.getElementById('loading').textContent =
+      '載入失敗，請重新登入。';
+  }
+}
+
+document.getElementById('save').onclick = async () => {
+
+  const button = document.getElementById('save');
+  const status = document.getElementById('status');
+
+  button.disabled = true;
+  button.textContent = 'SAVING...';
+  status.textContent = '';
+
+  const content = {};
+
+  fields.forEach(id => {
+    content[id] = getValue(id);
+  });
+
+  for (let i = 1; i <= 6; i++) {
+    content['photo' + i] = getValue('photo' + i);
+    content['caption' + i] = getValue('caption' + i);
+  }
+
+  try {
+    await api('save', { content });
+
+    status.textContent = '✓ 已儲存到 Supabase';
+
+  } catch (error) {
+    console.error(error);
+    status.textContent = '儲存失敗，請稍後再試。';
+
+  } finally {
+    button.disabled = false;
+    button.textContent = 'SAVE CHANGES';
+  }
+};
+
+document.getElementById('logout').onclick = async () => {
+  try {
+    await api('logout');
+  } catch (e) {}
+
+  sessionStorage.removeItem('admin_token');
+  location.href = 'index.html';
+};
+
+load();
+</script>
+
+</body>
+</html>
