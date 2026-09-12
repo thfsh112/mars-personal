@@ -1,12 +1,23 @@
 <!doctype html>
+
 <html lang="zh-Hant">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>V9 Editor</title>
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>V9 Editor · A Little Photo Journal</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap'
+);
 
 :root{
   --bg:#fbf7f2;
@@ -14,9 +25,17 @@
   --rose:#b98e87;
   --line:#ded3cd;
   --white:#fffdfb;
+  --soft:#f6eee9;
+  --danger:#b56f69;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
@@ -29,300 +48,577 @@ body{
 .page{
   max-width:900px;
   margin:auto;
-  padding:45px 25px 80px;
+  padding:0 25px 80px;
 }
 
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+header{
+  min-height:100px;
   border-bottom:1px solid var(--line);
-  padding-bottom:25px;
-  margin-bottom:45px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .brand{
-  font:600 22px/1 'Cormorant Garamond';
-  letter-spacing:3px;
+  font:600 18px/1 'Cormorant Garamond';
+  letter-spacing:2px;
 }
 
 .brand small{
+  display:block;
+  margin-top:7px;
   font:400 9px 'Noto Sans TC';
   letter-spacing:3px;
 }
 
-.links{
-  display:flex;
-  gap:12px;
+.back{
+  color:var(--ink);
+  text-decoration:none;
+  font-size:11px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:4px;
 }
 
-.links a,
-.links button{
-  border:1px solid var(--line);
-  background:var(--white);
-  color:var(--ink);
-  padding:9px 15px;
-  text-decoration:none;
-  cursor:pointer;
-  font-size:11px;
+.hero{
+  padding:75px 0 45px;
 }
 
 .eyebrow{
-  color:var(--rose);
   font-size:10px;
   letter-spacing:3px;
-  margin-bottom:12px;
+  color:var(--rose);
+  margin-bottom:18px;
 }
 
 h1{
-  font:500 58px/.9 'Cormorant Garamond';
-  margin:0 0 12px;
+  margin:0;
+  font:500 clamp(52px,9vw,90px)/.9 'Cormorant Garamond';
+  letter-spacing:-2px;
 }
 
-h2{
-  font:500 32px 'Cormorant Garamond';
-  margin:0 0 25px;
+.subtitle{
+  margin-top:18px;
+  color:#9b8e88;
+  font-size:12px;
+  line-height:2;
 }
 
-.card{
+.status{
+  margin:30px 0;
+  padding:15px 18px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  font-size:11px;
+}
+
+.status strong{
+  color:var(--rose);
+}
+
+.editor{
+  display:none;
+}
+
+.editor.show{
+  display:block;
+}
+
+.section{
+  margin:35px 0;
+  padding:30px;
   background:var(--white);
   border:1px solid var(--line);
-  padding:30px;
-  margin-bottom:22px;
 }
 
-label{
+.section h2{
+  margin:0 0 25px;
+  font:500 34px 'Cormorant Garamond';
+}
+
+.field{
+  margin-bottom:20px;
+}
+
+.field label{
   display:block;
-  font-size:11px;
-  letter-spacing:1px;
-  margin:18px 0 7px;
+  margin-bottom:8px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:#9b8e88;
 }
 
-input,
-textarea{
+.field input,
+.field textarea{
   width:100%;
   border:1px solid var(--line);
   background:#fff;
   color:var(--ink);
-  padding:12px 14px;
+  padding:13px 14px;
   font:300 13px 'Noto Sans TC';
   outline:none;
+  border-radius:0;
 }
 
-textarea{
-  min-height:110px;
+.field textarea{
+  min-height:120px;
   resize:vertical;
   line-height:1.8;
 }
 
-input:focus,
-textarea:focus{
+.field input:focus,
+.field textarea:focus{
   border-color:var(--rose);
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+.buttons{
+  display:flex;
+  gap:12px;
+  margin-top:25px;
 }
 
-.photo{
-  border:1px solid var(--line);
-  padding:20px;
-  background:#faf5f0;
-}
-
-.photoTitle{
-  font:500 25px 'Cormorant Garamond';
+button{
+  font-family:'Noto Sans TC',sans-serif;
+  cursor:pointer;
 }
 
 .save{
-  width:100%;
   border:0;
   background:var(--ink);
   color:white;
-  padding:16px;
-  cursor:pointer;
-  font-size:13px;
-  letter-spacing:2px;
+  padding:13px 28px;
+  font-size:11px;
+  letter-spacing:1px;
 }
 
-.save:disabled{
-  opacity:.5;
+.logout{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  padding:13px 24px;
+  font-size:11px;
 }
 
-.status{
+.message{
+  min-height:22px;
+  margin-top:15px;
+  font-size:11px;
+}
+
+.success{
+  color:#788a75;
+}
+
+.error{
+  color:var(--danger);
+}
+
+.loading{
+  padding:35px 0;
   text-align:center;
-  min-height:25px;
-  margin:15px 0;
-  font-size:12px;
-  color:var(--rose);
+  color:#9b8e88;
+  font-size:11px;
 }
 
-@media(max-width:650px){
-  .grid{grid-template-columns:1fr}
-  .top{align-items:flex-start;gap:20px}
-  .links{flex-direction:column}
-  h1{font-size:48px}
+footer{
+  border-top:1px solid var(--line);
+  padding-top:25px;
+  margin-top:60px;
+  color:#aaa;
+  font-size:9px;
+  letter-spacing:1px;
+  text-align:center;
 }
+
+@media(max-width:600px){
+
+  .page{
+    padding:0 18px 60px;
+  }
+
+  header{
+    min-height:80px;
+  }
+
+  .hero{
+    padding:55px 0 30px;
+  }
+
+  .section{
+    padding:22px;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .save,
+  .logout{
+    width:100%;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
 <div class="page">
 
-  <div class="top">
-    <div>
-      <div class="brand">
-        A LITTLE<br>
-        <small>PHOTO JOURNAL · V9 EDITOR</small>
-      </div>
-    </div>
+<header>
 
-    <div class="links">
-      <a href="index.html">回到網站</a>
-      <button id="logout">登出</button>
-    </div>
+  <div class="brand">
+    A LITTLE
+    <small>PHOTO JOURNAL · V9 EDITOR</small>
   </div>
 
-  <div class="eyebrow">PRIVATE AREA · V9</div>
-  <h1>Editor</h1>
+  <a class="back" href="index.html">
+    ← 回到網站
+  </a>
 
-  <div id="loading" class="status">正在載入資料……</div>
+</header>
 
-  <section class="card">
-    <div class="eyebrow">01 / PROFILE</div>
-    <h2>簡介</h2>
 
-    <label>名字</label>
-    <input id="name">
+<section class="hero">
 
-    <label>自我介紹</label>
-    <textarea id="intro"></textarea>
+  <div class="eyebrow">
+    PRIVATE AREA · V9
+  </div>
 
-    <label>Instagram 網址</label>
-    <input id="instagram_url" placeholder="https://instagram.com/...">
+  <h1>Editor.</h1>
 
-    <label>Email</label>
-    <input id="email" placeholder="you@example.com">
-  </section>
+  <p class="subtitle">
+    在這裡更新你的照片日誌、簡介、文字、音樂與倒數日期。
+    <br>
+    儲存後會同步到 Supabase。
+  </p>
 
-  <section class="card">
-    <div class="eyebrow">02 / HERO</div>
-    <h2>首頁照片與文字</h2>
+</section>
 
-    <label>Hero 照片網址</label>
-    <input id="hero_image" placeholder="https://...">
 
-    <label>照片文字</label>
-    <textarea id="quote"></textarea>
+<div id="status" class="status">
+  <strong>正在確認登入狀態...</strong>
+</div>
 
-    <label>照片文字下面的小字</label>
-    <input id="quote_author">
-  </section>
 
-  <section class="card">
-    <div class="eyebrow">03 / PHOTO JOURNAL</div>
-    <h2>照片</h2>
+<div id="loading" class="loading">
+  載入中...
+</div>
 
-    <div class="grid">
 
-      <div class="photo">
-        <div class="photoTitle">PHOTO 01</div>
-        <label>照片網址</label>
-        <input id="photo1">
-        <label>文字</label>
-        <input id="caption1">
-      </div>
+<main id="editor" class="editor">
 
-      <div class="photo">
-        <div class="photoTitle">PHOTO 02</div>
-        <label>照片網址</label>
-        <input id="photo2">
-        <label>文字</label>
-        <input id="caption2">
-      </div>
 
-      <div class="photo">
-        <div class="photoTitle">PHOTO 03</div>
-        <label>照片網址</label>
-        <input id="photo3">
-        <label>文字</label>
-        <input id="caption3">
-      </div>
+<!-- =====================================
+     ABOUT
+===================================== -->
 
-      <div class="photo">
-        <div class="photoTitle">PHOTO 04</div>
-        <label>照片網址</label>
-        <input id="photo4">
-        <label>文字</label>
-        <input id="caption4">
-      </div>
+<section class="section">
 
-      <div class="photo">
-        <div class="photoTitle">PHOTO 05</div>
-        <label>照片網址</label>
-        <input id="photo5">
-        <label>文字</label>
-        <input id="caption5">
-      </div>
+  <div class="eyebrow">
+    01 / ABOUT
+  </div>
 
-      <div class="photo">
-        <div class="photoTitle">PHOTO 06</div>
-        <label>照片網址</label>
-        <input id="photo6">
-        <label>文字</label>
-        <input id="caption6">
-      </div>
+  <h2>About me</h2>
 
-    </div>
-  </section>
 
-  <section class="card">
-    <div class="eyebrow">04 / PERSONAL NOTE</div>
-    <h2>文字</h2>
+  <div class="field">
 
-    <label>主要文字</label>
-    <textarea id="note_text"></textarea>
+    <label>NAME</label>
 
-    <label>小字</label>
-    <textarea id="note_small"></textarea>
-  </section>
+    <input
+      id="name"
+      type="text"
+      placeholder="你的名字"
+    >
 
-  <section class="card">
-    <div class="eyebrow">05 / MUSIC</div>
-    <h2>音樂</h2>
+  </div>
 
-    <label>Spotify 網址</label>
-    <input id="spotify_url">
-  </section>
 
-  <section class="card">
-    <div class="eyebrow">06 / COUNTDOWN</div>
-    <h2>倒數</h2>
+  <div class="field">
 
-    <label>倒數日期</label>
-    <input id="countdown_date" type="date">
-  </section>
+    <label>INTRO</label>
 
-  <div class="status" id="status"></div>
+    <textarea
+      id="intro"
+      placeholder="寫一段關於自己的介紹..."
+    ></textarea>
 
-  <button class="save" id="save">
-    SAVE CHANGES
-  </button>
+  </div>
+
+
+  <div class="field">
+
+    <label>INSTAGRAM URL</label>
+
+    <input
+      id="instagram_url"
+      type="url"
+      placeholder="https://instagram.com/..."
+    >
+
+  </div>
+
+
+  <div class="field">
+
+    <label>EMAIL</label>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="your@email.com"
+    >
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="section">
+
+  <div class="eyebrow">
+    02 / HERO
+  </div>
+
+  <h2>Hero photo</h2>
+
+
+  <div class="field">
+
+    <label>HERO IMAGE URL</label>
+
+    <input
+      id="hero_image"
+      type="url"
+      placeholder="照片網址"
+    >
+
+  </div>
+
+
+  <div class="field">
+
+    <label>QUOTE</label>
+
+    <textarea
+      id="quote"
+      placeholder="有些日子沒有特別發生什麼..."
+    ></textarea>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>QUOTE AUTHOR</label>
+
+    <input
+      id="quote_author"
+      type="text"
+      placeholder="— 2026 · a note to myself"
+    >
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     NOTE
+===================================== -->
+
+<section class="section">
+
+  <div class="eyebrow">
+    03 / PERSONAL NOTE
+  </div>
+
+  <h2>My words</h2>
+
+
+  <div class="field">
+
+    <label>NOTE TEXT</label>
+
+    <textarea
+      id="note_text"
+      placeholder="寫給未來自己的話..."
+    ></textarea>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>SMALL TEXT</label>
+
+    <textarea
+      id="note_small"
+      placeholder="補充文字..."
+    ></textarea>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     MUSIC
+===================================== -->
+
+<section class="section">
+
+  <div class="eyebrow">
+    04 / MUSIC
+  </div>
+
+  <h2>Currently playing</h2>
+
+
+  <div class="field">
+
+    <label>SPOTIFY URL</label>
+
+    <input
+      id="spotify_url"
+      type="url"
+      placeholder="Spotify 歌曲或播放清單網址"
+    >
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     COUNTDOWN
+===================================== -->
+
+<section class="section">
+
+  <div class="eyebrow">
+    05 / COUNTDOWN
+  </div>
+
+  <h2>A day to remember</h2>
+
+
+  <div class="field">
+
+    <label>COUNTDOWN DATE</label>
+
+    <input
+      id="countdown_date"
+      type="datetime-local"
+    >
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     SAVE
+===================================== -->
+
+<section class="section">
+
+  <div class="eyebrow">
+    06 / SAVE
+  </div>
+
+  <h2>Save changes</h2>
+
+  <p class="subtitle">
+    修改完成後按下儲存，資料會送到 Supabase。
+  </p>
+
+
+  <div class="buttons">
+
+    <button
+      id="saveBtn"
+      class="save"
+    >
+      SAVE CHANGES
+    </button>
+
+
+    <button
+      id="logoutBtn"
+      class="logout"
+    >
+      LOG OUT
+    </button>
+
+  </div>
+
+
+  <div
+    id="message"
+    class="message"
+  ></div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+  A LITTLE PHOTO JOURNAL · PRIVATE EDITOR
+</footer>
+
 
 </div>
 
+
 <script>
-const API =
-  'https://roynzxilxumfzzuezelg.supabase.co/functions/v1/admin-api';
 
-const token = sessionStorage.getItem('admin_token');
+/* =========================================
+   SUPABASE ADMIN API
+========================================= */
 
-if (!token) {
-  location.href = 'index.html';
-}
+const SUPABASE_URL =
+  'https://roynzxilxumfzzuezelg.supabase.co';
+
+const ADMIN_API =
+  `${SUPABASE_URL}/functions/v1/admin-api`;
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const statusBox =
+  document.getElementById('status');
+
+const loading =
+  document.getElementById('loading');
+
+const editor =
+  document.getElementById('editor');
+
+const saveBtn =
+  document.getElementById('saveBtn');
+
+const logoutBtn =
+  document.getElementById('logoutBtn');
+
+const message =
+  document.getElementById('message');
+
+
+/* =========================================
+   FIELD LIST
+========================================= */
 
 const fields = [
   'name',
@@ -338,117 +634,339 @@ const fields = [
   'countdown_date'
 ];
 
-const photoFields = [];
 
-for (let i = 1; i <= 6; i++) {
-  photoFields.push('photo' + i);
-  photoFields.push('caption' + i);
+/* =========================================
+   GET TOKEN
+========================================= */
+
+function getToken() {
+
+  return sessionStorage.getItem(
+    'admin_token'
+  );
+
 }
+
+
+/* =========================================
+   API REQUEST
+========================================= */
 
 async function api(action, extra = {}) {
-  const response = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      action,
-      token,
-      ...extra
-    })
-  });
 
-  const data = await response.json();
+  const token = getToken();
 
-  if (!response.ok) {
-    if (response.status === 401) {
-      sessionStorage.removeItem('admin_token');
-      location.href = 'index.html';
+  const body = {
+    action,
+    token,
+    ...extra
+  };
+
+  const response = await fetch(
+    ADMIN_API,
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(body)
     }
+  );
 
-    throw new Error(data.error || 'request failed');
+  let result = null;
+
+  try {
+    result = await response.json();
+  } catch {
+    result = null;
   }
 
-  return data;
+  return {
+    response,
+    result
+  };
+
 }
 
-function setValue(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.value = value || '';
+
+/* =========================================
+   REDIRECT TO HOME
+========================================= */
+
+function kickOut() {
+
+  sessionStorage.removeItem(
+    'admin_token'
+  );
+
+  sessionStorage.removeItem(
+    'admin_expires_at'
+  );
+
+  window.location.href =
+    'index.html';
+
 }
 
-function getValue(id) {
-  return document.getElementById(id)?.value || '';
-}
 
-async function load() {
+/* =========================================
+   LOAD CONTENT
+========================================= */
+
+async function loadContent() {
+
+  const token = getToken();
+
+  if (!token) {
+
+    statusBox.innerHTML =
+      '<strong>尚未登入。</strong> 正在返回網站...';
+
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 1000);
+
+    return;
+  }
+
+
   try {
-    const result = await api('get');
-    const data = result.content?.data || {};
 
-    fields.forEach(id => {
-      setValue(id, data[id]);
+    const {
+      response,
+      result
+    } = await api('get');
+
+
+    if (
+      response.status === 401 ||
+      result?.error === 'unauthorized'
+    ) {
+
+      statusBox.innerHTML =
+        '<strong>登入已失效。</strong> 請重新登入。';
+
+      setTimeout(kickOut, 1200);
+
+      return;
+    }
+
+
+    if (!response.ok || result?.ok !== true) {
+
+      statusBox.innerHTML =
+        '<strong>載入失敗。</strong> ' +
+        (result?.error || 'unknown error');
+
+      loading.style.display = 'none';
+
+      return;
+    }
+
+
+    /* 填入資料 */
+
+    const content =
+      result.content || {};
+
+
+    fields.forEach(key => {
+
+      const element =
+        document.getElementById(key);
+
+      if (!element) return;
+
+      element.value =
+        content[key] ?? '';
+
     });
 
-    for (let i = 1; i <= 6; i++) {
-      setValue('photo' + i, data['photo' + i]);
-      setValue('caption' + i, data['caption' + i]);
-    }
 
-    document.getElementById('loading').textContent = '資料已載入';
-  } catch (error) {
+    statusBox.innerHTML =
+      '<strong>✓ 已登入</strong>　資料已從 Supabase 載入。';
+
+    loading.style.display =
+      'none';
+
+    editor.classList.add('show');
+
+
+  } catch(error) {
+
     console.error(error);
-    document.getElementById('loading').textContent =
-      '載入失敗，請重新登入。';
+
+    statusBox.innerHTML =
+      '<strong>連線失敗。</strong> 請確認網路。';
+
+    loading.style.display =
+      'none';
+
   }
+
 }
 
-document.getElementById('save').onclick = async () => {
 
-  const button = document.getElementById('save');
-  const status = document.getElementById('status');
+/* =========================================
+   SAVE
+========================================= */
 
-  button.disabled = true;
-  button.textContent = 'SAVING...';
-  status.textContent = '';
+async function saveContent() {
+
+  saveBtn.disabled = true;
+
+  saveBtn.textContent =
+    'SAVING...';
+
+  message.textContent =
+    '';
+
+  message.className =
+    'message';
+
 
   const content = {};
 
-  fields.forEach(id => {
-    content[id] = getValue(id);
+
+  fields.forEach(key => {
+
+    const element =
+      document.getElementById(key);
+
+    if (element) {
+      content[key] =
+        element.value;
+    }
+
   });
 
-  for (let i = 1; i <= 6; i++) {
-    content['photo' + i] = getValue('photo' + i);
-    content['caption' + i] = getValue('caption' + i);
-  }
 
   try {
-    await api('save', { content });
 
-    status.textContent = '✓ 已儲存到 Supabase';
+    const {
+      response,
+      result
+    } = await api(
+      'save',
+      { content }
+    );
 
-  } catch (error) {
+
+    if (
+      response.status === 401 ||
+      result?.error === 'unauthorized'
+    ) {
+
+      message.textContent =
+        '登入已失效，請重新登入。';
+
+      message.className =
+        'message error';
+
+      setTimeout(kickOut, 1200);
+
+      return;
+    }
+
+
+    if (!response.ok || result?.ok !== true) {
+
+      message.textContent =
+        '儲存失敗：' +
+        (result?.error || 'unknown error');
+
+      message.className =
+        'message error';
+
+      return;
+    }
+
+
+    message.textContent =
+      '✓ 已成功儲存到 Supabase。';
+
+    message.className =
+      'message success';
+
+
+  } catch(error) {
+
     console.error(error);
-    status.textContent = '儲存失敗，請稍後再試。';
+
+    message.textContent =
+      '連線失敗，沒有完成儲存。';
+
+    message.className =
+      'message error';
 
   } finally {
-    button.disabled = false;
-    button.textContent = 'SAVE CHANGES';
+
+    saveBtn.disabled = false;
+
+    saveBtn.textContent =
+      'SAVE CHANGES';
+
   }
-};
 
-document.getElementById('logout').onclick = async () => {
-  try {
-    await api('logout');
-  } catch (e) {}
+}
 
-  sessionStorage.removeItem('admin_token');
-  location.href = 'index.html';
-};
 
-load();
+/* =========================================
+   LOGOUT
+========================================= */
+
+async function logout() {
+
+  const token =
+    getToken();
+
+  if (token) {
+
+    try {
+
+      await api('logout');
+
+    } catch(error) {
+
+      console.error(error);
+
+    }
+
+  }
+
+  sessionStorage.removeItem(
+    'admin_token'
+  );
+
+  sessionStorage.removeItem(
+    'admin_expires_at'
+  );
+
+  window.location.href =
+    'index.html';
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+saveBtn.onclick =
+  saveContent;
+
+logoutBtn.onclick =
+  logout;
+
+
+/* =========================================
+   START
+========================================= */
+
+loadContent();
+
 </script>
 
 </body>
+
 </html>
