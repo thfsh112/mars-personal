@@ -1,5 +1,5 @@
 const SUPABASE_URL = 'https://roynzxilxumfzzuezelg.supabase.co';
-const ADMIN_API = `${SUPABASE_URL}/functions/v1/admin-api-v5`;
+const ADMIN_API = `${SUPABASE_URL}/functions/v1/admin-login-v6`;
 
 const modal = document.getElementById('modal');
 const pw = document.getElementById('pw');
@@ -30,7 +30,7 @@ async function login() {
       method: 'POST',
       cache: 'no-store',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({action:'login', password})
+      body: JSON.stringify({password})
     });
     const text = await response.text();
     let result = null;
