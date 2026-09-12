@@ -4,139 +4,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Mars · A Little Photo Journal">
-<title>Mars · A Little Photo Journal</title>
+<meta name="description" content="A Little Photo Journal">
+<title>A Little Photo Journal · V9</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="page">
 <header>
-  <a class="brand" href="#">
-    MARS
-    <small>A LITTLE PHOTO JOURNAL</small>
-  </a>
+  <div class="brand">
+    A LITTLE<br>
+    <small>PHOTO JOURNAL</small>
+  </div>
   <nav>
+    <a href="#about">簡介</a>
     <a href="#photos">照片</a>
+    <a href="#note">文字</a>
     <a href="#music">音樂</a>
-    <a href="#schedule">日程</a>
   </nav>
 </header>
 <main>
 <!-- =========================
-     01 / HOME
+     01 / ABOUT
 ========================= -->
-<section class="intro">
-  <div class="intro-copy">
-<div class="eyebrow">
-  01 / HELLO
+<section id="about" class="intro">
+  <div class="eyebrow">
+    02 / A LITTLE NOTE
+  </div>
+  <div class="introGrid">
+<div>
+  <p class="hi">Hi, I’m</p>
+  <h1>詠丞<span>。</span></h1>
 </div>
-<p class="hi">
-  Hi, I'm
-</p>
-<h1 id="name">
-  Mars<span>。</span>
-</h1>
-<p id="introText" class="intro-text">
-  喜歡用鏡頭記錄生活裡的溫柔與不經意，
-  在平凡的日子裡，尋找不平凡的風景。
-  希望透過照片，讓大家也能看見我眼中的世界。
-</p>
-<!-- IG / EMAIL -->
-<div class="socials">
-  <a
-    id="instagramLink"
-    class="social"
-    href="https://www.instagram.com/_oso7.m4r5/"
-    target="_blank"
-    rel="noopener"
-    aria-label="Instagram"
-  >
-    <!-- Instagram icon -->
-    <svg viewBox="0 0 24 24">
-      <rect
-        x="3.2"
-        y="3.2"
-        width="17.6"
-        height="17.6"
-        rx="5"
-      />
-      <circle
-        cx="12"
-        cy="12"
-        r="4.1"
-      />
-      <circle
-        class="dot"
-        cx="17.5"
-        cy="6.6"
-        r="1.1"
-      />
-    </svg>
-  </a>
-  <a
-    id="emailLink"
-    class="social"
-    href="mailto:marsmars1000507@gmail.com"
-    aria-label="Gmail"
-  >
-    <!-- Gmail style icon -->
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M3.5 6.2
-           L12 12.7
-           L20.5 6.2"
-      />
-      <path
-        d="M4.2 5.5
-           H19.8
-           C20.5 5.5 21 6 21 6.7
-           V17.3
-           C21 18 20.5 18.5 19.8 18.5
-           H4.2
-           C3.5 18.5 3 18 3 17.3
-           V6.7
-           C3 6 3.5 5.5 4.2 5.5Z"
-      />
-    </svg>
-  </a>
+<div class="introText">
+  <p>
+    喜歡用鏡頭記錄生活裡的溫柔與不經意，<br>
+    在平凡的日子裡，尋找不平凡的風景。<br>
+    希望透過照片，讓大家也能看見我眼中的世界。
+  </p>
+  <div class="socials">
+    <a
+      class="social instagram"
+      href="#"
+      aria-label="Instagram"
+      target="_blank"
+    >◎</a>
+    <a
+      class="social email"
+      href="mailto:"
+      aria-label="Email"
+    >✉</a>
+  </div>
 </div>
   </div>
-  <!-- MAIN VISUAL -->
-  <div class="hero-visual">
-<div
-  id="heroPhoto"
-  class="hero-photo placeholder"
->
-  <span>
-    YOUR MAIN PHOTO
-  </span>
-  <small>
-    從後台放入你的主視覺照片
-  </small>
-</div>
-<div class="hero-caption">
-  <span>
-    02 / A LITTLE MOMENT
-  </span>
-  <i>
-    Good things take time.
-  </i>
-</div>
+  <div class="flower">
+    Good Things<br>
+    <i>Take Time</i> ✿
   </div>
 </section>
 <!-- =========================
-     02 / QUOTE
+     HERO + ONE QUOTE
 ========================= -->
-<section class="quote-section">
-  <div class="quote-card">
-<div class="quote-mark">
-  “
+<section class="hero">
+  <div class="heroPhoto">
+<div>
+  YOUR HERO PHOTO
+  <small>
+    把你的照片放到 images/hero.jpg
+  </small>
 </div>
-<p id="quote">
-  有些日子沒有特別發生什麼，
-  但回頭看，才發現它們也很值得被記住。
+  </div>
+  <!-- 佳句只保留這一個 -->
+  <div class="quote">
+<p>
+  有些日子沒有特別發生什麼，但回頭看，
+  才發現它們也很值得被記住。
 </p>
-<small id="quoteAuthor">
+<small>
   — 2026 · a note to myself
 </small>
   </div>
@@ -144,11 +87,8 @@
 <!-- =========================
      03 / PHOTO JOURNAL
 ========================= -->
-<section
-  id="photos"
-  class="photos-section"
->
-  <div class="section-head">
+<section id="photos">
+  <div class="head">
 <div>
   <div class="eyebrow">
     03 / MEMORIES
@@ -158,104 +98,124 @@
   </h2>
 </div>
 <p>
-  每一張照片，<br>
-  都留著當時的光。
+  把日常裡的小小光影，<br>
+  慢慢收藏起來。
 </p>
   </div>
-  <div
-    id="photoGrid"
-    class="photo-grid"
-  >
-<div class="empty-photo">
-  還沒有照片
-  <small>
-    從祕密後台上傳你的第一張照片
-  </small>
+  <div class="grid">
+<div class="photo tall">
+  PHOTO 01
+  <small>images/photo1.jpg</small>
+</div>
+<div class="photo">
+  PHOTO 02
+  <small>images/photo2.jpg</small>
+</div>
+<div class="photo">
+  PHOTO 03
+  <small>images/photo3.jpg</small>
+</div>
+<div class="photo wide">
+  PHOTO 04
+  <small>images/photo4.jpg</small>
+</div>
+<div class="photo">
+  PHOTO 05
+  <small>images/photo5.jpg</small>
+</div>
+<div class="photo tall">
+  PHOTO 06
+  <small>images/photo6.jpg</small>
 </div>
   </div>
 </section>
 <!-- =========================
-     04 / MUSIC
+     04 / PERSONAL NOTE
+     不再放重複佳句
 ========================= -->
-<section
-  id="music"
-  class="music-section"
->
+<section id="note" class="note">
   <div class="eyebrow">
-    04 / CURRENTLY PLAYING
+    04 / PERSONAL NOTE
   </div>
-  <div class="music-card">
+  <div class="noteBox">
+<p>
+  想說的話
+</p>
+<small>
+  這裡可以寫給未來自己的話，也可以放一段最近很喜歡的文字。
+</small>
+  </div>
+</section>
+<!-- =========================
+     05 / MUSIC
+========================= -->
+<section id="music">
+  <div class="eyebrow">
+    05 / CURRENTLY PLAYING
+  </div>
+  <div class="music">
 <div class="record">
   ♪
 </div>
-<div class="music-copy">
+<div>
   <h3>
     My little soundtrack
   </h3>
   <p>
-    最近正在播放的歌。
+    把最近喜歡的歌放在這裡。
   </p>
 </div>
 <a
-  id="spotifyLink"
-  class="music-btn"
   href="#"
+  class="musicBtn"
   target="_blank"
-  rel="noopener"
 >
   Spotify ↗
 </a>
   </div>
 </section>
 <!-- =========================
-     05 / SCHEDULE
+     06 / COUNTDOWN
 ========================= -->
-<section
-  id="schedule"
-  class="schedule-section"
->
+<section>
   <div class="eyebrow">
-    05 / A DAY TO REMEMBER
+    06 / COUNTDOWN
   </div>
-  <div class="schedule-card">
+  <div class="count">
 <div>
   <h2>
-    COUNTDOWN
+    A DAY TO REMEMBER
   </h2>
-  <small id="countdownDateLabel">
+  <small>
     2026-12-31
   </small>
 </div>
-<div class="countdown">
+<div class="nums">
   <div>
     <b id="d">0</b>
     <small>DAYS</small>
   </div>
   <div>
-    <b id="h">00</b>
+    <b id="h">0</b>
     <small>HOURS</small>
   </div>
   <div>
-    <b id="m">00</b>
+    <b id="m">0</b>
     <small>MIN</small>
   </div>
   <div>
-    <b id="s">00</b>
+    <b id="s">0</b>
     <small>SEC</small>
   </div>
 </div>
   </div>
 </section>
 <!-- =========================
-     SECRET
+     SECRET BUTTON
 ========================= -->
 <section class="secret">
-
-<button
-id=“secretBtn”
-aria-label=“Private editor”
-
-✦
+  <button id="secretBtn">
+    ✦
   </button>
   <p>
     some things are better kept a little secret.
@@ -264,7 +224,7 @@ aria-label=“Private editor”
 </main>
 <footer>
   <span>
-    © 2026 MARS
+    © 2026 A LITTLE PHOTO JOURNAL
   </span>
   <span>
     made with little moments ♡
@@ -272,16 +232,15 @@ aria-label=“Private editor”
 </footer>
 </div>
 <!-- =========================
-     LOGIN MODAL
+     SECRET LOGIN MODAL
 ========================= -->
 <div
   id="modal"
   class="modal hidden"
 >
-  <div class="modal-box">
+  <div class="modalBox">
 <button
   id="close"
-  class="close"
   aria-label="Close"
 >
   ×
@@ -301,16 +260,10 @@ aria-label=“Private editor”
   placeholder="Password"
   autocomplete="current-password"
 >
-<button
-  id="enter"
-  class="enter"
->
+<button id="enter">
   Enter
 </button>
-<div
-  id="err"
-  class="err"
-></div>
+<div id="err"></div>
   </div>
 </div>
 <script src="script.js"></script>
