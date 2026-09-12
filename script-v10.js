@@ -1,5 +1,5 @@
 const SUPABASE_URL = 'https://roynzxilxumfzzuezelg.supabase.co';
-const ADMIN_API = `${SUPABASE_URL}/functions/v1/admin-api-v6`;
+const ADMIN_API = `${SUPABASE_URL}/functions/v1/admin-api-v7`;
 
 const modal = document.getElementById('modal');
 const pw = document.getElementById('pw');
