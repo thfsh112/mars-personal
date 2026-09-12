@@ -1,5 +1,5 @@
 const SUPABASE_URL = 'https://roynzxilxumfzzuezelg.supabase.co';
-const ADMIN_API = `${SUPABASE_URL}/functions/v1/admin-api`;
+const ADMIN_API = `${SUPABASE_URL}/functions/v1/admin-api-v5`;
 
 const modal = document.getElementById('modal');
 const pw = document.getElementById('pw');
@@ -39,6 +39,10 @@ async function login() {
     if (response.status === 401 && result?.error === 'invalid_password') {
       err.textContent = '密碼不正確，再試一次。';
       pw.select();
+      return;
+    }
+    if (result?.error === 'rpc_error') {
+      err.textContent = '伺服器登入設定錯誤，請稍後再試。';
       return;
     }
     if (!response.ok) {
