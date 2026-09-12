@@ -46,9 +46,10 @@ header{
 }
 
 .brand{
-  font:500 20px/0.85 'Cormorant Garamond',serif;
+  font:500 20px/.85 'Cormorant Garamond',serif;
   letter-spacing:3px;
   color:var(--brown);
+  text-decoration:none;
 }
 
 .brand small{
@@ -101,26 +102,29 @@ section{
   letter-spacing:4px;
 }
 
-h1,h2,h3,p{
+h1,
+h2,
+h3,
+p{
   margin-top:0;
 }
 
 /* =========================
-   INTRO
+   01 / HOME
 ========================= */
 
 .intro{
-  position:relative;
-  min-height:590px;
-  padding-top:105px;
-  padding-bottom:70px;
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:70px;
+  align-items:center;
+  min-height:650px;
+  padding-top:80px;
+  padding-bottom:80px;
 }
 
-.introGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:end;
+.intro-copy{
+  padding-bottom:25px;
 }
 
 .hi{
@@ -140,13 +144,17 @@ h1 span{
   color:var(--rose);
 }
 
-.introText{
+.intro-text{
   max-width:480px;
   padding-bottom:10px;
   font-size:13px;
   line-height:2.15;
   color:#81716b;
 }
+
+/* =========================
+   SOCIAL
+========================= */
 
 .socials{
   display:flex;
@@ -163,8 +171,20 @@ h1 span{
   border-radius:50%;
   color:#725f59;
   text-decoration:none;
-  font-size:29px;
   transition:.3s;
+}
+
+.social svg{
+  width:30px;
+  height:30px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+}
+
+.social svg .dot{
+  fill:currentColor;
+  stroke:none;
 }
 
 .social:hover{
@@ -173,47 +193,27 @@ h1 span{
   transform:translateY(-3px);
 }
 
-/* decorative flower text */
-
-.flower{
-  position:absolute;
-  right:25px;
-  top:105px;
-  text-align:center;
-  color:#aa9189;
-  font:500 20px/1.05 'Cormorant Garamond',serif;
-  transform:rotate(-7deg);
-}
-
-.flower::before{
-  content:"✿";
-  display:block;
-  margin-bottom:7px;
-  font-size:25px;
-  opacity:.6;
-}
-
-.flower i{
-  font-size:27px;
-  font-style:italic;
-}
-
 /* =========================
-   HERO
+   MAIN VISUAL
 ========================= */
 
-.hero{
-  padding-top:10px;
+.hero-visual{
+  width:100%;
 }
 
-.heroPhoto{
+.hero-photo{
   position:relative;
-  height:590px;
+  min-height:570px;
   overflow:hidden;
   border-radius:3px;
+
   display:flex;
-  align-items:flex-end;
-  justify-content:center;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+
+  padding:45px 25px;
+
   text-align:center;
 
   background:
@@ -234,10 +234,11 @@ h1 span{
   font-size:10px;
 }
 
-.heroPhoto::before{
+.hero-photo::before{
   content:"";
   position:absolute;
   inset:0;
+
   background:
     radial-gradient(
       circle at 72% 30%,
@@ -252,13 +253,12 @@ h1 span{
     );
 }
 
-.heroPhoto > div{
+.hero-photo > *{
   position:relative;
   z-index:1;
-  padding-bottom:42px;
 }
 
-.heroPhoto small{
+.hero-photo small{
   display:block;
   margin-top:9px;
   font-size:9px;
@@ -266,46 +266,96 @@ h1 span{
   opacity:.75;
 }
 
-/* quote card */
+.hero-photo img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-.quote{
+.hero-photo.has-image{
+  color:transparent;
+}
+
+.hero-photo.has-image::before{
+  display:none;
+}
+
+.hero-caption{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding-top:16px;
+  color:#9d8d86;
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+.hero-caption i{
+  color:#9d8d86;
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;
+  letter-spacing:.5px;
+}
+
+/* =========================
+   02 / QUOTE
+========================= */
+
+.quote-section{
+  padding-top:20px;
+  padding-bottom:105px;
+}
+
+.quote-card{
   position:relative;
   z-index:2;
-  width:min(590px,88%);
-  margin:-92px 0 0 7%;
-  padding:44px 52px;
+  width:min(650px,90%);
+  margin:0 auto;
+  padding:48px 58px;
   background:rgba(255,253,251,.97);
   box-shadow:0 18px 55px rgba(75,52,45,.10);
 }
 
-.quote p{
+.quote-mark{
+  margin-bottom:5px;
+  color:var(--rose);
+  font:500 65px/.5 'Cormorant Garamond',serif;
+}
+
+.quote-card p{
   margin:0 0 20px;
   font:400 26px/1.65 'Cormorant Garamond',serif;
   color:#6d5b55;
 }
 
-.quote small{
+.quote-card small{
   color:#a18e87;
   font-size:9px;
   letter-spacing:2.5px;
 }
 
 /* =========================
-   PHOTO JOURNAL
+   03 / PHOTO JOURNAL
 ========================= */
 
-.head{
+.photos-section{
+  border-top:1px solid var(--line);
+}
+
+.section-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
   margin-bottom:40px;
 }
 
-.head h2{
+.section-head h2{
   margin:0;
 }
 
-.head p{
+.section-head > p{
   margin:0;
   color:#9b8982;
   font-size:11px;
@@ -319,107 +369,124 @@ h2{
   color:#65554f;
 }
 
-/* photo grid */
+/* =========================
+   PHOTO GRID
+========================= */
 
-.grid{
+.photo-grid{
   display:grid;
-  grid-template-columns:1.05fr 1fr 1fr;
-  grid-auto-rows:265px;
-  gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px 18px;
 }
 
-.photo{
-  position:relative;
-  overflow:hidden;
+.empty-photo{
+  min-height:265px;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
 
-  background:
-    linear-gradient(
-      135deg,
-      #dfd0c9,
-      #f2e4dc 50%,
-      #d5c0b8
-    );
+  border:1px dashed #d8c6bf;
+  background:#f7eee9;
 
-  color:rgba(105,82,74,.75);
-  font-size:9px;
-  letter-spacing:3px;
-  transition:.4s;
+  color:#a18f88;
+  font-size:10px;
+  letter-spacing:2px;
 }
 
-.photo::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      circle at 65% 35%,
-      rgba(255,246,227,.35),
-      transparent 30%
-    );
-}
-
-.photo:hover{
-  transform:translateY(-4px);
-  box-shadow:0 14px 30px rgba(70,50,43,.10);
-}
-
-.photo > *{
-  position:relative;
-  z-index:1;
-}
-
-.photo small{
-  display:block;
-  margin-top:8px;
-  color:rgba(105,82,74,.55);
+.empty-photo small{
+  margin-top:10px;
   font-size:8px;
   letter-spacing:.5px;
 }
 
-.tall{
-  grid-row:span 2;
-}
+/* 真正的照片卡 */
 
-.wide{
-  grid-column:span 2;
-}
-
-/* =========================
-   PERSONAL NOTE
-========================= */
-
-.note{
-  border-top:1px solid var(--line);
-}
-
-.noteBox{
-  padding:70px 10%;
+.photo-card{
+  overflow:hidden;
+  background:var(--paper);
   border:1px solid var(--line);
-  background:#f7eee9;
+  transition:.4s;
 }
 
-.noteBox p{
-  margin:0 0 27px;
-  font:400 38px/1.5 'Cormorant Garamond',serif;
-  color:#705e57;
+.photo-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(70,50,43,.10);
 }
 
-.noteBox small{
-  color:#9c8b84;
-  font-size:11px;
-  line-height:2;
+.photo-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:#eadbd4;
+}
+
+.photo-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.photo-card:hover .photo-image img{
+  transform:scale(1.025);
+}
+
+.photo-info{
+  padding:18px 18px 20px;
+}
+
+.photo-title{
+  margin-bottom:12px;
+  color:#6c5952;
+  font:500 20px/1 'Cormorant Garamond',serif;
+}
+
+.photo-exif{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px 15px;
+}
+
+.exif-item{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:5px;
+  border-bottom:1px solid #eee3de;
+  font-size:8px;
+}
+
+.exif-label{
+  color:#aa9992;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+.exif-value{
+  color:#77645d;
+  text-align:right;
+}
+
+.photo-date{
+  margin-top:11px;
+  color:#aa9992;
+  font-size:8px;
+  letter-spacing:1px;
 }
 
 /* =========================
-   MUSIC
+   04 / MUSIC
 ========================= */
 
-.music,
-.count{
+.music-section{
+  padding-top:95px;
+}
+
+.music-card{
   display:flex;
   align-items:center;
   gap:25px;
@@ -441,18 +508,18 @@ h2{
   box-shadow:0 7px 18px rgba(75,54,48,.13);
 }
 
-.music h3{
+.music-copy h3{
   margin:0 0 5px;
   font:500 27px 'Cormorant Garamond',serif;
 }
 
-.music p{
+.music-copy p{
   margin:0;
   color:#9b8982;
   font-size:11px;
 }
 
-.musicBtn{
+.music-btn{
   margin-left:auto;
   padding:11px 21px;
   border:1px solid var(--line);
@@ -463,43 +530,51 @@ h2{
   transition:.3s;
 }
 
-.musicBtn:hover{
+.music-btn:hover{
   background:#77645d;
   color:#fff;
 }
 
 /* =========================
-   COUNTDOWN
+   05 / SCHEDULE
 ========================= */
 
-.count{
+.schedule-card{
+  display:flex;
+  align-items:center;
   justify-content:space-between;
+  gap:30px;
+
+  padding:35px 40px;
+
+  background:var(--paper);
+  border:1px solid var(--line);
 }
 
-.count h2{
+.schedule-card h2{
   margin:0 0 9px;
   font-size:38px;
 }
 
-.count > div > small{
+.schedule-card > div:first-child > small{
   color:#a08e87;
   font-size:9px;
   letter-spacing:2px;
 }
 
-.nums{
+.countdown{
   display:flex;
   gap:32px;
   text-align:center;
 }
 
-.nums b{
+.countdown b{
   display:block;
   font:500 42px 'Cormorant Garamond',serif;
   color:#6b5953;
 }
 
-.nums small{
+.countdown small{
   color:#a18f88;
   font-size:8px;
   letter-spacing:2px;
@@ -569,7 +644,7 @@ footer{
   display:none;
 }
 
-.modalBox{
+.modal-box{
   position:relative;
   width:min(390px,100%);
   padding:48px;
@@ -578,7 +653,7 @@ footer{
   box-shadow:0 25px 70px rgba(40,30,25,.18);
 }
 
-.modalBox #close{
+.modal-box .close{
   position:absolute;
   top:13px;
   right:18px;
@@ -589,17 +664,17 @@ footer{
   cursor:pointer;
 }
 
-.modalBox h2{
+.modal-box h2{
   margin-bottom:10px;
   font-size:43px;
 }
 
-.modalBox p{
+.modal-box p{
   color:#9d8c85;
   font-size:11px;
 }
 
-.modalBox input{
+.modal-box input{
   width:100%;
   margin:12px 0;
   padding:14px;
@@ -611,11 +686,11 @@ footer{
   font-family:'Noto Sans TC',sans-serif;
 }
 
-.modalBox input:focus{
+.modal-box input:focus{
   border-color:#c6a49c;
 }
 
-.modalBox #enter{
+.modal-box .enter{
   width:100%;
   padding:13px;
   border:0;
@@ -627,11 +702,11 @@ footer{
   transition:.3s;
 }
 
-.modalBox #enter:hover{
+.modal-box .enter:hover{
   background:#4e403b;
 }
 
-.modalBox #err{
+.modal-box .err{
   min-height:18px;
   margin-top:10px;
   color:#b56f69;
@@ -668,14 +743,13 @@ footer{
     padding:65px 0;
   }
 
+  /* 主畫面改成上下排列 */
+
   .intro{
+    grid-template-columns:1fr;
+    gap:42px;
     min-height:auto;
     padding-top:70px;
-  }
-
-  .introGrid{
-    grid-template-columns:1fr;
-    gap:38px;
   }
 
   .hi{
@@ -687,39 +761,45 @@ footer{
     letter-spacing:-4px;
   }
 
-  .introText{
+  .intro-text{
     font-size:12px;
   }
 
-  .flower{
-    display:none;
-  }
-
   .social{
-    width:60px;
-    height:60px;
-    font-size:25px;
+    width:62px;
+    height:62px;
   }
 
-  .heroPhoto{
-    height:430px;
+  .hero-photo{
+    min-height:430px;
   }
 
-  .quote{
-    width:92%;
-    margin:-52px auto 0;
-    padding:30px 27px;
+  .hero-caption{
+    font-size:7px;
   }
 
-  .quote p{
+  .hero-caption i{
+    font-size:12px;
+  }
+
+  /* 佳句 */
+
+  .quote-card{
+    width:94%;
+    padding:32px 28px;
+  }
+
+  .quote-card p{
     font-size:22px;
   }
 
-  .head{
+  /* 照片 */
+
+  .section-head{
     display:block;
   }
 
-  .head p{
+  .section-head > p{
     margin-top:18px;
     text-align:left;
   }
@@ -728,42 +808,45 @@ footer{
     font-size:46px;
   }
 
-  .grid{
-    grid-template-columns:1fr 1fr;
-    grid-auto-rows:205px;
-    gap:9px;
+  .photo-grid{
+    grid-template-columns:1fr;
+    gap:20px;
   }
 
-  .noteBox{
-    padding:42px 25px;
+  .photo-info{
+    padding:16px;
   }
 
-  .noteBox p{
-    font-size:29px;
-  }
+  /* 音樂 */
 
-  .music,
-  .count{
+  .music-card{
     padding:25px;
     flex-wrap:wrap;
   }
 
-  .musicBtn{
+  .music-btn{
     margin-left:0;
   }
 
-  .nums{
-    width:100%;
+  /* 日程 */
+
+  .schedule-card{
+    padding:25px;
+    display:block;
+  }
+
+  .countdown{
+    margin-top:28px;
     justify-content:space-between;
     gap:7px;
   }
 
-  .count h2{
-    font-size:29px;
+  .countdown b{
+    font-size:31px;
   }
 
-  .nums b{
-    font-size:31px;
+  .schedule-card h2{
+    font-size:29px;
   }
 
   footer{
@@ -775,7 +858,7 @@ footer{
     display:block;
   }
 
-  .modalBox{
+  .modal-box{
     padding:42px 28px;
   }
 }
