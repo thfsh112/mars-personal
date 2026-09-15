@@ -6,12 +6,32 @@
 <meta name="description" content="Mars · A Little Photo Journal">
 <title>Mars · A Little Photo Journal</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* V10 refinements */
+.socials{gap:24px;margin-top:30px;align-items:center}
+.social{width:auto!important;height:auto!important;border:0!important;border-radius:0!important;display:block!important;padding:0!important;color:#806d66!important;font-size:12px!important;letter-spacing:2px;text-decoration:none!important;background:none!important;transform:none!important}
+.social::after{content:' ↗';color:#b98e87;transition:.25s}
+.social:hover{color:#b98e87!important}
+.social:hover::after{padding-left:3px}
+.grid{grid-auto-rows:220px!important;gap:12px!important}
+.photoCard{min-height:0!important}
+.photoCard>img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.photoInfo{max-width:calc(100% - 20px)}
+.music{position:relative;min-height:112px}
+.music .record{display:none}
+@media(max-width:760px){
+  .socials{gap:18px}
+  .social{font-size:11px!important}
+  .grid{grid-auto-rows:175px!important;gap:9px!important}
+  .photoInfo{max-width:calc(100% - 14px)}
+}
+</style>
 </head>
 <body>
 <div class="page">
 <header><a class="brand" href="#">MARS<small>A LITTLE PHOTO JOURNAL</small></a><nav><a href="#about">主畫面</a><a href="#photos">照片</a><a href="#music">音樂</a><a href="#schedule">日程</a></nav></header>
 <main>
-<section id="about" class="intro"><div class="eyebrow">01 / HELLO</div><div class="introGrid"><div><p class="hi">Hi, I'm</p><h1 id="name">Mars<span>。</span></h1></div><div class="introText"><p id="introText">喜歡用鏡頭記錄生活裡的溫柔與不經意，<br>在平凡的日子裡，尋找不平凡的風景。<br>希望透過照片，讓大家也能看見我眼中的世界。</p><div class="socials"><a id="instagramLink" class="social" href="https://www.instagram.com/_oso7.m4r5/" target="_blank" rel="noopener">◎</a><a id="emailLink" class="social" href="mailto:marsmars1000507@gmail.com">✉</a></div></div></div><div class="flower">Good Things<br><i>Take Time</i> ✿</div></section>
+<section id="about" class="intro"><div class="eyebrow">01 / HELLO</div><div class="introGrid"><div><p class="hi">Hi, I'm</p><h1 id="name">Mars<span>。</span></h1></div><div class="introText"><p id="introText">喜歡用鏡頭記錄生活裡的溫柔與不經意，<br>在平凡的日子裡，尋找不平凡的風景。<br>希望透過照片，讓大家也能看見我眼中的世界。</p><div class="socials"><a id="instagramLink" class="social" href="https://www.instagram.com/_oso7.m4r5/" target="_blank" rel="noopener">Instagram</a><a id="emailLink" class="social" href="mailto:marsmars1000507@gmail.com">Email</a></div></div></div><div class="flower">Good Things<br><i>Take Time</i> ✿</div></section>
 <section class="hero"><div id="heroPhoto" class="heroPhoto"><div>YOUR MAIN PHOTO<small>從後台放入你的主視覺照片</small></div></div><div class="quote"><p id="quoteText">有些日子沒有特別發生什麼，但回頭看，才發現它們也很值得被記住。</p><small id="quoteAuthor">— a note to myself</small></div></section>
 <section id="photos"><div class="head"><div><div class="eyebrow">03 / MEMORIES</div><h2>PHOTO JOURNAL</h2></div><p>每一張照片，<br>都留著當時的光。</p></div><div id="photoGrid" class="grid"><div class="photo tall">PHOTO 01<small>從祕密後台上傳</small></div><div class="photo">PHOTO 02<small>從祕密後台上傳</small></div><div class="photo">PHOTO 03<small>從祕密後台上傳</small></div><div class="photo wide">PHOTO 04<small>從祕密後台上傳</small></div><div class="photo">PHOTO 05<small>從祕密後台上傳</small></div><div class="photo tall">PHOTO 06<small>從祕密後台上傳</small></div></div></section>
 <section id="note" class="note"><div class="eyebrow">04 / PERSONAL NOTE</div><div class="noteBox"><p id="noteTitle">想說的話</p><small id="noteText">這裡可以寫給未來自己的話，也可以放一段最近很喜歡的文字。</small><small id="noteSmall" style="display:block;margin-top:12px"></small></div></section>
@@ -20,5 +40,5 @@
 <section class="secret"><button id="secretBtn" aria-label="Private editor">✦</button><p>some things are better kept a little secret.</p></section>
 </main><footer><span>© 2026 MARS</span><span>made with little moments ♡</span></footer></div>
 <div id="modal" class="modal hidden"><div class="modalBox"><button id="close" aria-label="Close">×</button><div class="eyebrow">PRIVATE AREA</div><h2>Welcome back.</h2><p>輸入密碼進入編輯區</p><input id="pw" type="password" placeholder="Password" autocomplete="current-password"><button id="enter">Enter</button><div id="err"></div></div></div>
-<script src="script-v10.js?v=20260915"></script>
+<script src="script-v10.js?v=20260915b"></script>
 </body></html>
