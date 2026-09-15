@@ -30,7 +30,7 @@ async function login() {
       method: 'POST',
       cache: 'no-store',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({password})
+      body: JSON.stringify({action:'login', password})
     });
     const text = await response.text();
     let result = null;
